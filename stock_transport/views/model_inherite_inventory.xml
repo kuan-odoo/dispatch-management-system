@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="stock_picking_batch_stock_picking_batch_form" model="ir.ui.view">
+            <field name="name">stock.picking.batch.form</field>
+            <field name="model">stock.picking.batch</field>
+            <field name="inherit_id" ref="stock_picking_batch.stock_picking_batch_form"/>
+            <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='scheduled_date']" position="after">
+            <field name="dock"/>
+            <field name="vehicle"/>
+            <field name="category"/>
+            <field name="category_weight" widget="progressbar" />
+            <field name="category_volume" widget="progressbar"/>
+            </xpath>
+
+
+            <xpath expr="//field[@name='category_weight']" position="attributes">
+
+                    <attribute name="invisible"> not category</attribute>
+
+                </xpath>
+
+            <xpath expr="//field[@name='category_volume']" position="attributes">
+
+                <attribute name="invisible"> not category</attribute>
+
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

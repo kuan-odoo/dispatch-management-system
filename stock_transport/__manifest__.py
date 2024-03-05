@@ -1,7 +1,7 @@
 {
     'name': "Stock transport",
     'version': '1.0',
-    'depends': ['base', 'sale','website'],
+    'depends': ['base', 'stock_picking_batch','fleet','stock_delivery'],
     'author': "Anil kumawat",
     'category': 'Category',
     'description': """
@@ -9,6 +9,9 @@
     """,
     # data files always loaded at installation
     'data': [
+        'security/ir.model.access.csv',
+        'views/inherite_fleet_view.xml',
+        'views/model_inherite_inventory.xml',
         
         
     ],
