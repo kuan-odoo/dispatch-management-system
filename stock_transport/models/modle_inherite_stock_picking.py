@@ -4,7 +4,8 @@ class Inherit(models.Model):
     _inherit = 'stock.picking'
     shipping_volume = fields.Float(compute="_compute_volume" ,string="Volume for shipping")
     shipping_weight = fields.Float(compute="_compute_weight" ,string="Weight for shipping")
-    @api.depends('move_ids')
+
+    @api.depends('product_id.weight', 'product_id.volume','move_line_ids.quantity')
     def _compute_weight(self):
         for record in self:
             current_weight = 0
@@ -15,7 +16,7 @@ class Inherit(models.Model):
             record.shipping_weight= current_weight
 
 
-    @api.depends('move_ids')
+    @api.depends('product_id.weight', 'product_id.volume','move_line_ids.quantity')
     def _compute_volume(self):
         for record in self:
             current_volume = 0

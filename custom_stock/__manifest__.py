@@ -1,7 +1,7 @@
 {
     'name': "Stock transport",
     'version': '1.0',
-    'depends': ['stock_picking_batch'],
+    'depends': ['stock'],
     'author': "Anil kumawat",
     'category': 'Category',
     'description': """
@@ -20,6 +20,7 @@
     # 'demo': [
     #     'data/estate_demo.xml',
     # ],
+    'auto_install':True,
     'installable': True,
     'application': True,
     

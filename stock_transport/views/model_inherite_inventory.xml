@@ -9,7 +9,7 @@
 
             <xpath expr="//field[@name='scheduled_date']" position="after">
             <field name="dock"/>
-            <field name="vehicle"/>
+            <field name="vehicle" plceholder="Opel GJ45XC1234"/>
             <field name="category"/>
             <field name="weight" widget="progressbar" options="{'max_value': 100}"/>
             <field name="volume" widget="progressbar" options="{'max_value': 100}"/>
@@ -41,7 +41,7 @@
                 scales="day,week,month,year"
                 string="Batch Gantt View"
                 color="dock"
-                decoration-info="state in ['draft', 'done']"
+                decoration-info="state in ['draft']"
                 pill_label = "True"
                 default_group_by="dock,vehicle">
                 <field name="state"/>
@@ -55,7 +55,7 @@
         <field name="model">stock.picking.batch</field>
         <field name="arch" type="xml">
             <graph string="Batch Transfer">
-                <field name="scheduled_date"/>
+                <field name="scheduled_date" interval="day"/>
                 <field name="category"/>
             </graph>
         </field>

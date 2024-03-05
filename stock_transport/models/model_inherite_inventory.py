@@ -6,7 +6,7 @@ class InheritInventory(models.Model):
 
     dock = fields.Many2one('model.dock',string="Dock")
 
-    vehicle = fields.Many2one("fleet.vehicle","Vehicle",plceholder="Opel GJ45XC1234")
+    vehicle = fields.Many2one("fleet.vehicle","Vehicle")
 
     category = fields.Many2one("fleet.vehicle.model.category",String="Vehicle Category")
 
@@ -22,7 +22,7 @@ class InheritInventory(models.Model):
     lines = fields.Float(compute="_compute_lines",string="Lines",store=True)
 
 
-    @api.depends('move_ids')
+    @api.depends('picking_ids.shipping_weight')
     def _compute_weight(self):
         for record in self:
             current_weight = 0
@@ -39,7 +39,7 @@ class InheritInventory(models.Model):
                 record.weight = 100
 
 
-    @api.depends('move_ids')
+    @api.depends('picking_ids.shipping_volume')
     def _compute_volume(self):
         for record in self:
             current_volume = 0
