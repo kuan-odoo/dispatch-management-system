@@ -1,7 +1,7 @@
 {
     'name': "Stock transport",
     'version': '1.0',
-    'depends': ['base', 'stock_picking_batch','fleet','web_gantt'],
+    'depends': ['stock_picking_batch'],
     'author': "Anil kumawat",
     'category': 'Category',
     'description': """
@@ -9,10 +9,7 @@
     """,
     # data files always loaded at installation
     'data': [
-        'security/ir.model.access.csv',
-        'views/inherite_fleet_view.xml',
-        'views/model_inherite_inventory.xml',
-        'views/inherite_stock_picking_view.xml',
+        'views/custom_stock_view.xml',
         
         
     ],
