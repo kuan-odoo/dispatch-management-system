@@ -11,11 +11,18 @@
             <field name="dock"/>
             <field name="vehicle" plceholder="Opel GJ45XC1234"/>
             <field name="category"/>
-            <field name="weight" widget="progressbar" options="{'max_value': 100}"/>
-            <field name="volume" widget="progressbar" options="{'max_value': 100}"/>
-            </xpath>
+            <label for='total_volume' string='Volume'/>
+            <div class="o_row">
+                    <field name='total_volume'/>
+                    <field name='volume' class='oe_inline' widget='progressbar' invisible='not category'/>
+                </div>
 
-
+                <label for='total_weight' string='Weight'/>
+                <div class="o_row">
+                    <field name='total_weight'/>
+                    <field name='weight' class='oe_inline' widget='progressbar' invisible='not category'/>
+                </div>
+            </xpath>                                             
             <xpath expr="//field[@name='weight']" position="attributes">
 
                     <attribute name="invisible"> not category</attribute>
@@ -43,8 +50,12 @@
                 color="dock"
                 decoration-info="state in ['draft']"
                 pill_label = "True"
-                default_group_by="dock,vehicle">
+                default_group_by="dock,vehicle,user_id"
+                thumbnails="{'user_id': 'avatar_128'}">
+                 <field name="partner_id" avatar_field="avatar_128"/>
+           
                 <field name="state"/>
+                <!-- <field name="display_name"/> -->
                 <field name="category"/>
             </gantt>
         </field>
